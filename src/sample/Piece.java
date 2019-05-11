@@ -9,14 +9,27 @@ public class Piece extends StackPane {
 
     private PieceType type;
 
-    private PieceType getType() {
+    private double mouseX;
+    private double mouseY;
+    private double oldX;
+    private double oldY;
+
+    public PieceType getType() {
         return type;
+    }
+
+    public double getOldX() {
+        return oldX;
+    }
+
+    public double getOldY() {
+        return oldY;
     }
 
     public Piece(PieceType type, int x, int y) {
         this.type = type;
         //Creating the ellipse's background
-        relocate(x * TILE_SIZE, y * TILE_SIZE);
+        move(x, y);
         Ellipse bg = new Ellipse(TILE_SIZE * 0.3125, TILE_SIZE * 0.25);
         bg.setFill(Color.BLACK);
         bg.setStroke(Color.BLACK);
@@ -32,5 +45,24 @@ public class Piece extends StackPane {
         ellipse.setTranslateY((TILE_SIZE - TILE_SIZE * 0.26 * 2) / 2);
 
         getChildren().addAll(bg, ellipse);
+
+        setOnMousePressed(e -> {
+            mouseX = e.getSceneX();
+            mouseY = e.getSceneY();
+        });
+
+        setOnMouseDragged(e -> {
+            relocate(e.getSceneX() - mouseX + oldX, e.getSceneY() - mouseY + oldY);
+        });
+    }
+
+    public void move(int x, int y) {
+        oldX = x * TILE_SIZE;
+        oldY = y * TILE_SIZE;
+        relocate(oldX, oldY);
+    }
+
+    public void abortMove() {
+        relocate(oldX, oldY);
     }
 }
