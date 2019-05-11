@@ -54,7 +54,7 @@ public class Main extends Application {
 
                 Piece piece = null;
                 if (y <= 2 && (x + y) % 2 != 0) {
-                    piece = makePiece(PieceType.BLACK, x, y);
+                    piece = makePiece(PieceType.RED, x, y);
                 }
                 if (y >= 5 && (x + y) % 2 != 0) {
                     piece = makePiece(PieceType.WHITE, x, y);
@@ -73,9 +73,14 @@ public class Main extends Application {
         piece.setOnMouseReleased(e -> {
             int newX = toBoard(piece.getLayoutX());
             int newY = toBoard(piece.getLayoutY());
-            MoveResult result = tryMove(piece, newX, newY);
-            int x0 = toBoard(piece.getLayoutX());
-            int y0 = toBoard(piece.getLayoutY());
+            MoveResult result;
+            if (newX < 0 || newY < 0 || newX >= WIDTH || newY >= HEIGHT) {
+                result = new MoveResult(MoveType.NONE);
+            } else {
+                result = tryMove(piece, newX, newY);
+            }
+            int x0 = toBoard(piece.getOldX());
+            int y0 = toBoard(piece.getOldY());
             switch (result.getType()) {
                 case NONE:
                     piece.abortMove();
@@ -99,7 +104,7 @@ public class Main extends Application {
     }
 
     private MoveResult tryMove(Piece piece, int newX, int newY ) {
-        if (board[newX][newY].hasPiece() || ((newX + newY) % 2 == 0)) {
+        if (board[newX][newY].hasPiece() || (newX + newY) % 2 == 0) {
             return new MoveResult(MoveType.NONE);
         }
 
