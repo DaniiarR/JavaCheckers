@@ -1,8 +1,6 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,9 +23,6 @@ public class Main extends Application {
 
     private Tile[][] board = new Tile[WIDTH][HEIGHT];
 
-
-
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -46,12 +41,8 @@ public class Main extends Application {
         Pane leftPanel = new Pane();
         leftPanel.setPrefSize(WIDTH * TILE_SIZE, HEIGHT * TILE_SIZE);
         leftPanel.getChildren().addAll(tileGroup, pieceGroup);
-        //Right side the contains additional information about the game
+        //Right side that contains additional information about the game
         SideMenu menu = new SideMenu();
-//        VBox rightPanel = new VBox();
-//        rightPanel.setPrefWidth(200);
-//        Label label = new Label("Daniiar's Checkers");
-//        rightPanel.getChildren().add(label);
         //Layout of the main window
         HBox layout = new HBox(10, leftPanel, menu);
         //Creating the tiles and pieces
@@ -84,22 +75,30 @@ public class Main extends Application {
             int newX = toBoard(piece.getLayoutX());
             int newY = toBoard(piece.getLayoutY());
             MoveResult result;
+            //if the new position of a piece is not a legal place, return NONE type
             if (newX < 0 || newY < 0 || newX >= WIDTH || newY >= HEIGHT) {
                 result = new MoveResult(MoveType.NONE);
             } else {
+                //in legal cases try to make a move
                 result = tryMove(piece, newX, newY);
             }
+            //getting the old position in board coordinates
             int x0 = toBoard(piece.getOldX());
             int y0 = toBoard(piece.getOldY());
+            //make a decision according to the type of move a player wants to make
             switch (result.getType()) {
+                //we simply abort the move if NONE
                 case NONE:
                     piece.abortMove();
                     break;
+                //if NORMAL, delete the piece from the old position and place it to the new position
                 case NORMAL:
                     piece.move(newX, newY);
                     board[x0][y0].setPiece(null);
                     board[newX][newY].setPiece(piece);
                     break;
+                //if KILL, we move the piece to the new position and delete it from the initial position
+                //then we increment the counter for killed pieces
                 case KILL:
                     piece.move(newX, newY);
                     board[x0][y0].setPiece(null);
@@ -117,12 +116,14 @@ public class Main extends Application {
         });
         return piece;
     }
-
+    //returns the type of move that the user wants to make
     private MoveResult tryMove(Piece piece, int newX, int newY ) {
+        //if the tile on which user wants to move his piece is not empty
+        //or if it is a white tile, return NONE MoveType
         if (board[newX][newY].hasPiece() || (newX + newY) % 2 == 0) {
             return new MoveResult(MoveType.NONE);
         }
-
+        //getting piece's old position in board coordinates
         int x0 = toBoard(piece.getOldX());
         int y0 = toBoard(piece.getOldY());
         // Normal move

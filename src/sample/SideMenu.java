@@ -1,9 +1,5 @@
 package sample;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
@@ -13,10 +9,6 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 
 public class SideMenu extends VBox {
-
-//    public static IntegerProperty whiteKilled = new SimpleIntegerProperty(0);
-//    public static IntegerProperty redKilled = new SimpleIntegerProperty(0);
-//    public static StringProperty whiteKilledText = new SimpleStringProperty(this, "whiteKilledText", "White pieces killed: 0");
 
     public static int whitePiecesKilled = 0;
     public static int redPiecesKilled = 0;
