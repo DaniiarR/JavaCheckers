@@ -1,14 +1,18 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
+
+import static sample.SideMenu.redPiecesKilled;
+import static sample.SideMenu.whitePiecesKilled;
+
 
 public class Main extends Application {
 
@@ -21,6 +25,9 @@ public class Main extends Application {
 
     private Tile[][] board = new Tile[WIDTH][HEIGHT];
 
+
+
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -30,6 +37,7 @@ public class Main extends Application {
         Scene scene = new Scene(createBoard());
         primaryStage.setTitle("Daniiar's Checkers");
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
@@ -39,12 +47,13 @@ public class Main extends Application {
         leftPanel.setPrefSize(WIDTH * TILE_SIZE, HEIGHT * TILE_SIZE);
         leftPanel.getChildren().addAll(tileGroup, pieceGroup);
         //Right side the contains additional information about the game
-        VBox rightPanel = new VBox();
-        rightPanel.setPrefWidth(200);
-        Label label = new Label("Daniiar's Checkers");
-        rightPanel.getChildren().add(label);
+        SideMenu menu = new SideMenu();
+//        VBox rightPanel = new VBox();
+//        rightPanel.setPrefWidth(200);
+//        Label label = new Label("Daniiar's Checkers");
+//        rightPanel.getChildren().add(label);
         //Layout of the main window
-        HBox layout = new HBox(10, leftPanel, rightPanel);
+        HBox layout = new HBox(10, leftPanel, menu);
         //Creating the tiles and pieces
         for (int y = 0; y < HEIGHT; y++) {
             for (int x = 0; x < WIDTH; x++) {
@@ -70,6 +79,7 @@ public class Main extends Application {
 
     private Piece makePiece(PieceType type, int x, int y) {
         Piece piece = new Piece(type, x, y);
+        piece.setMouseTransparent(false);
         piece.setOnMouseReleased(e -> {
             int newX = toBoard(piece.getLayoutX());
             int newY = toBoard(piece.getLayoutY());
@@ -96,6 +106,11 @@ public class Main extends Application {
                     board[newX][newY].setPiece(piece);
                     Piece otherPiece = result.getPiece();
                     board[toBoard(otherPiece.getOldX())][toBoard(otherPiece.getOldY())].setPiece(null);
+                    if (otherPiece.getType().equals(PieceType.WHITE)) {
+                        sample.SideMenu.whiteKilledLabel.setText("White pieces killed: " + (++whitePiecesKilled));
+                    } else {
+                        sample.SideMenu.redKilledLabel.setText("Red pieces killed: " + (++redPiecesKilled));
+                    }
                     pieceGroup.getChildren().remove(otherPiece);
                     break;
             }
