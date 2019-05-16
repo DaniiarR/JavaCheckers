@@ -23,6 +23,7 @@ public class Main extends Application {
 
     private Tile[][] board = new Tile[WIDTH][HEIGHT];
 
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -111,6 +112,11 @@ public class Main extends Application {
                         sample.SideMenu.redKilledLabel.setText("Red pieces killed: " + (++redPiecesKilled));
                     }
                     pieceGroup.getChildren().remove(otherPiece);
+                    if (whitePiecesKilled == 12) {
+                        CongratulationWindow.display("Red");
+                    } else if (redPiecesKilled == 12) {
+                        CongratulationWindow.display("White");
+                    }
                     break;
             }
         });

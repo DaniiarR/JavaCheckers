@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9a237245-6448-48b1-b7d5-cc491a334a82" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Piece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/SideMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SideMenu.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -18,22 +18,33 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-120">
-              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="40">
+              <caret line="115" column="24" selection-start-line="115" selection-start-column="24" selection-end-line="115" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5846#5847#0" expanded="true" />
-                <element signature="e#5911#5912#0" expanded="true" />
+                <element signature="e#6165#6166#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/CongratulationWindow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/SideMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
+            <state relative-caret-position="436">
+              <caret line="40" column="49" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,17 +100,19 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/sample/PieceType.java" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/AllStar.java" />
         <option value="$PROJECT_DIR$/src/sample/Piece.java" />
+        <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/SideMenu.java" />
+        <option value="$PROJECT_DIR$/src/sample/CongratulationWindow.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="1" />
-    <option name="width" value="1364" />
-    <option name="height" value="728" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="250" />
+    <option name="y" value="38" />
+    <option name="width" value="957" />
+    <option name="height" value="658" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -135,7 +148,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557732171489" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558010833633" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -161,7 +174,13 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <extension name="recording" autostart="false" />
+      <extension name="recording" autostart="false">
+        <include_pattern>
+          <option name="PATTERN" value="sample.*" />
+          <option name="ENABLED" value="true" />
+          <option name="INCLUDE" value="true" />
+        </include_pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -183,18 +202,18 @@
       <option name="presentableId" value="Default" />
       <updated>1557668380622</updated>
       <workItem from="1557668382445" duration="12929000" />
-      <workItem from="1558003933237" duration="2581000" />
+      <workItem from="1558003933237" duration="6781000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15510000" />
+    <option name="totallyTimeSpent" value="19710000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="0" width="1364" height="728" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15107362" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14901665" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -203,7 +222,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32941177" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32941177" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.109656304" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -253,20 +272,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-120">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="40">
+          <caret line="115" column="24" selection-start-line="115" selection-start-column="24" selection-end-line="115" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5846#5847#0" expanded="true" />
-            <element signature="e#5911#5912#0" expanded="true" />
+            <element signature="e#6165#6166#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/SideMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
+        <state relative-caret-position="436">
+          <caret line="40" column="49" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/CongratulationWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

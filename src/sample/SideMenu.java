@@ -2,6 +2,7 @@ package sample;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
@@ -33,7 +34,10 @@ public class SideMenu extends VBox {
         redKilledLabel.setFont(Font.font("Century", 18));
         score.getChildren().addAll(whiteKilledLabel, redKilledLabel);
 
-        //getChildren().addAll(label, whiteKilledLabel, redKilledLabel);
-        getChildren().addAll(label, score);
+        Button button = new Button("Congrats window");
+        button.setOnAction(e -> {
+            CongratulationWindow.display("Red");
+        });
+        getChildren().addAll(label, score, button);
     }
 }
