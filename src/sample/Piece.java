@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import static sample.Main.TILE_SIZE;
 
-public class Piece extends StackPane {
+public class  Piece extends StackPane {
 
     private PieceType type;
 
