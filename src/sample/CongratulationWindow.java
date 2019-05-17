@@ -12,7 +12,9 @@ import javafx.stage.Stage;
 
 public class CongratulationWindow {
 
-    public static void display(String winner) {
+
+
+    public void display(String winner) {
         Stage primaryStage = new Stage();
         primaryStage.initModality(Modality.APPLICATION_MODAL);
         primaryStage.setTitle("Congratulations!");
@@ -27,6 +29,10 @@ public class CongratulationWindow {
         label.setFont(Font.font("Constantia", 34));
         Button restartButton = new Button("Restart");
         Button exitButton = new Button("Exit");
+        exitButton.setOnAction(e -> {
+            primaryStage.close();
+            Main.primaryStage.close();
+        });
         restartButton.setPrefSize(80, 40);
         exitButton.setPrefSize(80, 40);
 

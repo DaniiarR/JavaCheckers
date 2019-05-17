@@ -35,9 +35,8 @@ public class SideMenu extends VBox {
         score.getChildren().addAll(whiteKilledLabel, redKilledLabel);
 
         Button button = new Button("Congrats window");
-        button.setOnAction(e -> {
-            CongratulationWindow.display("Red");
-        });
+        CongratulationWindow cong = new CongratulationWindow();
+        button.setOnAction(e -> cong.display("Red"));
         getChildren().addAll(label, score, button);
     }
 }

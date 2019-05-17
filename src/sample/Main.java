@@ -14,6 +14,8 @@ import static sample.SideMenu.whitePiecesKilled;
 
 public class Main extends Application {
 
+    static Stage primaryStage;
+
     public static final int TILE_SIZE = 70;
     public static final int WIDTH = 8;
     public static final int HEIGHT = 8;
@@ -30,14 +32,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Scene scene = new Scene(createBoard());
-        primaryStage.setTitle("Daniiar's Checkers");
-        primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
-        primaryStage.show();
-    }
-
-    private Parent createBoard() {
+        this.primaryStage = primaryStage;
         //Left side of the main window that contains the board
         Pane leftPanel = new Pane();
         leftPanel.setPrefSize(WIDTH * TILE_SIZE, HEIGHT * TILE_SIZE);
@@ -66,8 +61,14 @@ public class Main extends Application {
                 }
             }
         }
-        return layout;
+        Scene scene = new Scene(layout);
+        primaryStage.setTitle("Daniiar's Checkers");
+        primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
+        primaryStage.show();
+
     }
+
 
     private Piece makePiece(PieceType type, int x, int y) {
         Piece piece = new Piece(type, x, y);
@@ -112,18 +113,20 @@ public class Main extends Application {
                         sample.SideMenu.redKilledLabel.setText("Red pieces killed: " + (++redPiecesKilled));
                     }
                     pieceGroup.getChildren().remove(otherPiece);
+                    CongratulationWindow congratsWindow = new CongratulationWindow();
                     if (whitePiecesKilled == 12) {
-                        CongratulationWindow.display("Red");
+                        congratsWindow.display("Red");
                     } else if (redPiecesKilled == 12) {
-                        CongratulationWindow.display("White");
+                        congratsWindow.display("White");
                     }
                     break;
             }
         });
         return piece;
     }
+
     //returns the type of move that the user wants to make
-    private MoveResult tryMove(Piece piece, int newX, int newY ) {
+    private MoveResult tryMove(Piece piece, int newX, int newY) {
         //if the tile on which user wants to move his piece is not empty
         //or if it is a white tile, return NONE MoveType
         if (board[newX][newY].hasPiece() || (newX + newY) % 2 == 0) {
@@ -146,7 +149,7 @@ public class Main extends Application {
         return new MoveResult(MoveType.NONE);
     }
 
-     private int toBoard(double pixel) {
+    private int toBoard(double pixel) {
         return (int) (pixel + TILE_SIZE / 2) / TILE_SIZE;
-     }
+    }
 }
