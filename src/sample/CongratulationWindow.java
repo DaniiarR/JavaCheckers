@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -31,7 +32,7 @@ public class CongratulationWindow {
         Button exitButton = new Button("Exit");
         exitButton.setOnAction(e -> {
             primaryStage.close();
-            Main.primaryStage.close();
+            Platform.exit();
         });
         restartButton.setPrefSize(80, 40);
         exitButton.setPrefSize(80, 40);

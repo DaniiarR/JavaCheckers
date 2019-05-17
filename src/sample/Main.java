@@ -14,7 +14,7 @@ import static sample.SideMenu.whitePiecesKilled;
 
 public class Main extends Application {
 
-    static Stage primaryStage;
+    Stage primaryStage;
 
     public static final int TILE_SIZE = 70;
     public static final int WIDTH = 8;
