@@ -23,7 +23,7 @@ public class Tile extends Rectangle {
         setWidth(Main.TILE_SIZE);
         setHeight(Main.TILE_SIZE);
         relocate(x * Main.TILE_SIZE, y * Main.TILE_SIZE);
-        setFill(light ? Color.valueOf("#feb") : Color.valueOf("#0D891E"));
+        setFill(light ? Color.rgb(255, 240, 245, 0.8) : Color.rgb(32, 32, 32, 0.8));
 
     }
 }

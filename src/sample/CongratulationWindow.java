@@ -5,15 +5,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class CongratulationWindow {
-
-
 
     public void display(String winner) {
         Stage primaryStage = new Stage();
@@ -29,6 +27,8 @@ public class CongratulationWindow {
         label.setAlignment(Pos.CENTER);
         label.setFont(Font.font("Constantia", 34));
         Button restartButton = new Button("Restart");
+        restartButton.setOnAction(e -> {
+        });
         Button exitButton = new Button("Exit");
         exitButton.setOnAction(e -> {
             primaryStage.close();

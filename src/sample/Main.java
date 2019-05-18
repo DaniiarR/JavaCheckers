@@ -1,11 +1,12 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.geometry.Side;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import static sample.SideMenu.redPiecesKilled;
@@ -25,6 +26,9 @@ public class Main extends Application {
 
     private Tile[][] board = new Tile[WIDTH][HEIGHT];
 
+    private int whiteColumn, whiteRow = 0;
+    private int redColumn, redRow = 0;
+
 
     public static void main(String[] args) {
         launch(args);
@@ -40,7 +44,11 @@ public class Main extends Application {
         //Right side that contains additional information about the game
         SideMenu menu = new SideMenu();
         //Layout of the main window
-        HBox layout = new HBox(10, leftPanel, menu);
+        HBox layout = new HBox(0, leftPanel, menu);
+        BackgroundImage myBI= new BackgroundImage(new Image("sample/alatoodanr.png",1200,1100,false,true),
+                BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+                BackgroundSize.DEFAULT);
+        leftPanel.setBackground(new Background(myBI));
         //Creating the tiles and pieces
         for (int y = 0; y < HEIGHT; y++) {
             for (int x = 0; x < WIDTH; x++) {
@@ -107,12 +115,27 @@ public class Main extends Application {
                     board[newX][newY].setPiece(piece);
                     Piece otherPiece = result.getPiece();
                     board[toBoard(otherPiece.getOldX())][toBoard(otherPiece.getOldY())].setPiece(null);
+                    if (whiteColumn > 5) {
+                        whiteRow = 1;
+                        whiteColumn = 0;
+                    }
+                    if (redColumn > 5) {
+                        redRow = 1;
+                        redColumn = 0;
+                    }
                     if (otherPiece.getType().equals(PieceType.WHITE)) {
                         sample.SideMenu.whiteKilledLabel.setText("White pieces killed: " + (++whitePiecesKilled));
+                        SideMenu.whitePiecesArray[whiteRow][whiteColumn].setVisible(true);
+                        whiteColumn++;
+                        System.out.println(whiteColumn);
                     } else {
                         sample.SideMenu.redKilledLabel.setText("Red pieces killed: " + (++redPiecesKilled));
+                        SideMenu.redPiecesArray[redRow][redColumn].setVisible(true);
+                        redColumn++;
+                        System.out.println(redColumn);
                     }
                     pieceGroup.getChildren().remove(otherPiece);
+
                     CongratulationWindow congratsWindow = new CongratulationWindow();
                     if (whitePiecesKilled == 12) {
                         congratsWindow.display("Red");
