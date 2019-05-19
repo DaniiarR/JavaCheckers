@@ -2,6 +2,7 @@ package sample;
 
 import javafx.application.Platform;
 import javafx.geometry.Pos;
+import javafx.geometry.Side;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -27,7 +28,15 @@ public class CongratulationWindow {
         label.setAlignment(Pos.CENTER);
         label.setFont(Font.font("Constantia", 34));
         Button restartButton = new Button("Restart");
-        restartButton.setOnAction(e -> {
+        restartButton.setOnAction( __ -> {
+            System.out.println( "Restarting app!" );
+            primaryStage.close();
+            Main.primaryStage.close();
+            SideMenu.whitePiecesKilled = 0;
+            SideMenu.redPiecesKilled = 0;
+            SideMenu.whiteKilledLabel.setText("White pieces killed: 0");
+            SideMenu.redKilledLabel.setText("Red pieces killed: 0");
+            Platform.runLater(() -> new Main().start(new Stage()));
         });
         Button exitButton = new Button("Exit");
         exitButton.setOnAction(e -> {

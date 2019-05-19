@@ -15,7 +15,7 @@ import static sample.SideMenu.whitePiecesKilled;
 
 public class Main extends Application {
 
-    Stage primaryStage;
+    static Stage primaryStage;
 
     public static final int TILE_SIZE = 70;
     public static final int WIDTH = 8;
@@ -35,7 +35,7 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         //Left side of the main window that contains the board
         Pane leftPanel = new Pane();
