@@ -161,7 +161,8 @@ public class Main extends Application {
         // Normal move
         if (Math.abs(newX - x0) == 1 && newY - y0 == piece.getType().moveDir) {
             return new MoveResult(MoveType.NORMAL);
-        } else if (Math.abs(newX - x0) == 2 && newY - y0 == piece.getType().moveDir * 2) {
+        } else if (Math.abs(newX - x0) == 2 &&
+                ((newY - y0 == piece.getType().moveDir * 2) || (newY - y0 == piece.getType().moveDir * (-2)))) {
             //Kill move
             int x1 = x0 + (newX - x0) / 2;
             int y1 = y0 + (newY - y0) / 2;
