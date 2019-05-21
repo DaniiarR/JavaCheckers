@@ -75,6 +75,7 @@ public class Main extends Application {
         Scene scene = new Scene(layout);
 
         primaryStage.setTitle("Daniiar's Checkers");
+        primaryStage.getIcons().add(new Image("sample/icon.png"));
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
     }
