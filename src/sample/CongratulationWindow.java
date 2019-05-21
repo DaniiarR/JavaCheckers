@@ -2,11 +2,9 @@ package sample;
 
 import javafx.application.Platform;
 import javafx.geometry.Pos;
-import javafx.geometry.Side;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
@@ -22,7 +20,7 @@ public class CongratulationWindow {
         primaryStage.setMinHeight(250);
 
         Label label = new Label();
-        label.setText(String.format("%s pieces won!", winner));
+        label.setText(String.format("%s won!", winner));
         label.setMaxWidth(Double.MAX_VALUE);
         label.setMinHeight(70);
         label.setAlignment(Pos.CENTER);
@@ -34,8 +32,8 @@ public class CongratulationWindow {
             Main.primaryStage.close();
             SideMenu.whitePiecesKilled = 0;
             SideMenu.redPiecesKilled = 0;
-            SideMenu.whiteKilledLabel.setText("White pieces killed: 0");
-            SideMenu.redKilledLabel.setText("Red pieces killed: 0");
+            SideMenu.whiteKilledLabel.setText("Player 1 killed: 0");
+            SideMenu.redKilledLabel.setText("Player 2 killed: ");
             Platform.runLater(() -> new Main().start(new Stage()));
         });
         Button exitButton = new Button("Exit");

@@ -1,13 +1,12 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.geometry.Side;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import sun.rmi.runtime.Log;
 
 import static sample.SideMenu.redPiecesKilled;
 import static sample.SideMenu.whitePiecesKilled;
@@ -37,6 +36,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
+
+        LoginWindow.display();
         //Left side of the main window that contains the board
         Pane leftPanel = new Pane();
         leftPanel.setPrefSize(WIDTH * TILE_SIZE, HEIGHT * TILE_SIZE);
@@ -49,6 +50,7 @@ public class Main extends Application {
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
                 BackgroundSize.DEFAULT);
         leftPanel.setBackground(new Background(myBI));
+
         //Creating the tiles and pieces
         for (int y = 0; y < HEIGHT; y++) {
             for (int x = 0; x < WIDTH; x++) {
@@ -59,6 +61,7 @@ public class Main extends Application {
                 Piece piece = null;
                 if (y <= 2 && (x + y) % 2 != 0) {
                     piece = makePiece(PieceType.RED, x, y);
+
                 }
                 if (y >= 5 && (x + y) % 2 != 0) {
                     piece = makePiece(PieceType.WHITE, x, y);
@@ -70,11 +73,10 @@ public class Main extends Application {
             }
         }
         Scene scene = new Scene(layout);
+
         primaryStage.setTitle("Daniiar's Checkers");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
-        primaryStage.show();
-
     }
 
 
@@ -124,12 +126,23 @@ public class Main extends Application {
                         redColumn = 0;
                     }
                     if (otherPiece.getType().equals(PieceType.WHITE)) {
-                        sample.SideMenu.whiteKilledLabel.setText("White pieces killed: " + (++whitePiecesKilled));
+                        if (LoginWindow.nameInput1.getText().equals("")) {
+                            SideMenu.whiteKilledLabel.setText("Player 1 killed: " + (++whitePiecesKilled));
+                        } else {
+                            SideMenu.whiteKilledLabel.setText(String.format("%s killed: %d",
+                                    LoginWindow.nameInput1.getText(), ++whitePiecesKilled));
+                        }
                         SideMenu.whitePiecesArray[whiteRow][whiteColumn].setVisible(true);
                         whiteColumn++;
                         System.out.println(whiteColumn);
+
                     } else {
-                        sample.SideMenu.redKilledLabel.setText("Red pieces killed: " + (++redPiecesKilled));
+                        if (LoginWindow.nameInput2.getText().equals("")) {
+                            SideMenu.redKilledLabel.setText("Player 2 killed: " + (++redPiecesKilled));
+                        } else {
+                            SideMenu.redKilledLabel.setText(String.format("%s killed: %d",
+                                    LoginWindow.nameInput2.getText(), ++redPiecesKilled));
+                        }
                         SideMenu.redPiecesArray[redRow][redColumn].setVisible(true);
                         redColumn++;
                         System.out.println(redColumn);
@@ -138,9 +151,9 @@ public class Main extends Application {
 
                     CongratulationWindow congratsWindow = new CongratulationWindow();
                     if (whitePiecesKilled == 12) {
-                        congratsWindow.display("Red");
+                        congratsWindow.display(LoginWindow.nameInput1.getText());
                     } else if (redPiecesKilled == 12) {
-                        congratsWindow.display("White");
+                        congratsWindow.display(LoginWindow.nameInput2.getText());
                     }
                     break;
             }
